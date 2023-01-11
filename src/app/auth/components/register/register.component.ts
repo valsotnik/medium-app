@@ -1,10 +1,12 @@
+import {ICurrentUser} from './../../../shared/types/currentUser.interface'
 import {Component, OnInit} from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {select, Store} from '@ngrx/store'
 import {Observable} from 'rxjs'
 
 import {isSubmittingSelector} from './../../store/selectors'
-import {registerAction} from '../../store/actions'
+import {registerAction} from '../../store/actions/register.action'
+import {IRegisterRequest} from '../../types/registerRequest.interface'
 
 @Component({
   selector: 'app-register',
@@ -31,7 +33,10 @@ export class RegisterComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    this.store.dispatch(registerAction(this.form.value))
+    const request: IRegisterRequest = {
+      user: this.form.value,
+    }
+    this.store.dispatch(registerAction({request}))
   }
 
   public initializeValues(): void {
