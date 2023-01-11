@@ -8,6 +8,7 @@ import {IBackendErrors} from './../../../../types/backendErrors.interface'
   styleUrls: ['./backend-error-messages.component.scss'],
 })
 export class BackendErrorMessagesComponent implements OnInit {
+  // problem with a IBackendErrors | null type
   //@ts-ignore
   @Input('backendErrors') backendErrorsProps
 
